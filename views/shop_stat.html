@@ -1,0 +1,201 @@
+
+ <flare-messages></flare-messages>
+ <div class=" panel panel-primary" >
+  <div class="panel-heading" style="background-color:#24CA5A">
+    <h4>{{'Statistic' | translate }}</h4>
+    <div style="text-align:center" class="loading-spiner-holder" data-loading ><div class="loading-spiner"><img width="60" height="30" src="./img/spinner.gif" /></div>
+    </div>
+    <a class="btn btn-primary" href="#/antenne/shop/{{magasin.id}}">{{'back' | translate }}</a>
+      
+    <button class="btn-sm btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        {{'archive' | translate }}
+    </button>
+    <div class="collapse" id="collapseExample">
+      <div class=" " ng-repeat="(index,month) in archive">
+        <button class = "btn-sm btn-warning" data-toggle = "modal" data-target = "#{{index}}">
+          {{index}}
+        </button>
+        
+        <div class = "mod modal fade" id = "{{index}}" tabindex = "-1" role = "dialog" 
+         aria-labelledby = "myModalLabel" aria-hidden = "true">
+         
+         
+            <div class = "modal-content">
+              <div class="modal-header" style="background-color:#24CA5A">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="panel-title">{{'Month' | translate }} : {{index}}</h4>
+              </div>
+               
+               <div class="modal-body" style="color:black">
+
+               <table class="table table-user-information">
+          <thead>
+
+          <th>{{'Article' | translate }}</th>
+          <th>{{'ingress' | translate }}</th>
+          <th>Freq( /{{'day' | translate }})</th>
+          <th>{{'outflow' | translate }}</th>
+          <th>Freq( /{{'day' | translate }})</th>
+          
+          </thead>
+          
+          <tbody>
+            <tr  dir-paginate="article in month | itemsPerPage: pageSize" current-page="currentPage">
+            
+               
+              <td>{{article.stock.article.nom}}</td>
+              <td>{{article.entree}}</td>
+              <td>{{article.freqentree | number : fractionSize}}</td>
+              <td >
+              
+                {{article.sortie}}
+             
+
+              </td>
+              <td>{{article.freqsortie | number : fractionSize}}</td>
+            </tr>
+         
+           </tbody>
+      </table>
+      <dir-pagination-controls boundary-links="true"  ></dir-pagination-controls>
+                 
+                      
+
+                </div>
+   
+            </div><!-- /.modal-content -->
+ 
+      </div><!-- /.modal -->
+        
+      </div>
+    </div>
+
+      <button class = "btn-sm btn-warning" data-toggle = "modal" data-target = "#stat">
+        {{'latest_action' | translate }}
+      </button>
+
+      <div class = "mod modal fade" id = "stat" tabindex = "-1" role = "dialog" 
+         aria-labelledby = "myModalLabel" aria-hidden = "true">
+         
+         
+            <div class = "modal-content">
+              <div class="modal-header" style="background-color:#24CA5A">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="panel-title">{{'latest_action' | translate }}</h4>
+              </div>
+               
+               <div class="modal-body" data-spy="scroll" style="background-color:#FCD3AB">
+                 
+                 <div class="row">
+
+                          <div class="thumbnail no-margin-bottom">
+                            
+                              
+                              <div class="caption">
+                                  <h3> {{'Entrance' | translate }}</h3>
+                                  <table class="table table-user-information table-responsive">
+                                    <thead>
+
+                                    <th>{{'Title' | translate }}</th>
+                                    <th>{{'Quantity' | translate }}</th>
+                                    <th>{{'User' | translate }}</th>
+                                    <th>{{'date' | translate }}</th>
+                                    </thead>
+                                    
+                                    <tbody>
+                                    
+                                      <tr ng-repeat="entree in entreesm">
+                                         
+                                        <td>{{entree.libelle}}</td>
+                                        <td>{{entree.quantite}}</td>
+                                        <td>{{entree.utilisateur.nom}}</td>
+                                        <td>{{entree.date | date:'longDate'}}</td>
+                                      </tr>
+                                   
+                                     </tbody>
+                                </table>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+
+                          <div class="thumbnail no-margin-bottom">
+                            
+                              
+                              <div class="caption">
+                                  <h3> {{'Output' | translate }}</h3>
+                                  <table class="table table-user-information">
+                                    <thead>
+
+                                    <th>{{'Title' | translate }}</th>
+                                    <th>{{'Quantity' | translate }}</th>
+                                    <th>{{'User' | translate }}</th>
+                                    <th>{{'Date' | translate }}</th>
+                                    </thead>
+                                    
+                                    <tbody>
+                                    
+                                      <tr ng-repeat="sortie in sortiesm">
+                                         
+                                        <td>{{sortie.libelle}}</td>
+                                        <td>{{sortie.quantite}}</td>
+                                        <td>{{sortie.utilisateur.nom}}</td>
+                                        <td>{{sortie.date | date:'longDate'}}</td>
+                                      </tr>
+                                   
+                                     </tbody>
+                                </table>
+                              </div>
+                          </div>
+                      </div>
+
+                </div>
+   
+            </div><!-- /.modal-content -->
+ 
+      </div><!-- /.modal -->
+
+  </div>
+    
+        
+    <div class="panel-body">
+     <div class="caption">
+        <h3> {{'Current' | translate }}</h3><button   ng-click="printstat()"  class="btn-sm btn-warning" >
+        {{'get_file' | translate }}
+      </button>
+        <table class="table table-user-information">
+          <thead>
+
+          <th>{{'Article' | translate }}</th>
+          <th>{{'ingress' | translate }}</th>
+          <th>Freq( /{{'day' | translate }})</th>
+          <th>{{'outflow' | translate }}</th>
+          <th>Outflow Freq( /{{'day' | translate }})</th>
+          
+          </thead>
+          
+          <tbody>
+            <tr  dir-paginate="article in all | itemsPerPage: pageSize" current-page="currentPage">
+            
+               
+              <td>{{article.stock.article.nom}}</td>
+              <td>{{article.entree}}</td>
+              <td>{{article.freqentree | number : fractionSize}}</td>
+              <td >
+              
+                {{article.sortie}}
+             
+
+              </td>
+              <td>{{article.freqsortie | number : fractionSize}}</td>
+            </tr>
+         
+           </tbody>
+      </table>
+      <dir-pagination-controls boundary-links="true"  ></dir-pagination-controls>
+    </div>
+      
+      
+
+    </div>
+    </div>

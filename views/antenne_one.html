@@ -1,0 +1,59 @@
+<div class="panel panel-default">
+  <flare-messages></flare-messages>
+    <div class="panel-heading" style="background-color:#24CA5A"><h3>{{'Office' | translate }} : {{ antenne.libelle }}</h3> 
+
+      <span ng-show="{{u.currentUser.role == 'ROLE_MANAGER'}}">
+       <a  class="btn btn-primary" href="#/antenne/shop/add/{{antenne.id}}">{{'Add_shop' | translate }}</a>
+      </span>
+
+
+    <div style="text-align:center" class="loading-spiner-holder" data-loading ><div class="loading-spiner"><img width="60" height="30" src="./img/spinner.gif" /></div></div>
+
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-bordered table-hover table-condensed table-responsive">
+          <thead>
+            <tr>
+              <th>{{'Title' | translate }}</th>
+              <th>{{'Location' | translate }}</th>
+              <th>{{'Article' | translate }}</th>
+              
+              <th>{{'Action' | translate }}</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+             <tr  dir-paginate="magasin in magasins | itemsPerPage: pageSize" current-page="currentPage">
+            
+              <td>
+                {{magasin.nom}}
+              </td>
+              <td>
+                {{magasin.localisation}} 
+              </td>
+              <td>
+                <span class="badge">{{magasin.stocks.length}}</span>
+              </td>
+              <td>
+                
+                  <a  class="btn-sm btn-warning"  href="#/antenne/shop/{{magasin.id}}"><i class="glyphicon glyphicon-eye-open"></i></a>
+                  
+                <span ng-show="{{u.currentUser.role == 'ROLE_MANAGER'}}">
+                  <a   ng-show="{{u.currentUser.antenne == magasin.antenne.libelle}}" href="#/shop/edit/{{magasin.id}}" class="btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i></a>
+                </span>
+                
+                <span ng-show="{{u.currentUser.role == 'ROLE_MANAGER'}}">
+                  <a  ng-show="{{u.currentUser.antenne == magasin.antenne.libelle}}" href="#/shop/delete/{{magasin.id}}" class="btn-sm btn-danger"><i class="glyphicon glyphicon-remove-circle"></i></a>
+                </span>
+
+              </td>
+                
+             
+            </tr>
+          </tbody>
+        </table>
+        <dir-pagination-controls boundary-links="true"  ></dir-pagination-controls>
+      
+      </div>
+</div>

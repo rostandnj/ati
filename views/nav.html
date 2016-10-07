@@ -1,0 +1,106 @@
+<style type="text/css">
+  /* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+ 
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin-top: 20px;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+
+
+.navbar-content
+{
+    width:320px;
+    padding: 15px;
+    padding-bottom:0px;
+}
+
+.dropdown-menu {
+padding: 0px;
+overflow: hidden;
+}
+</style>
+
+        <div class="col-md-12" ng-controller="HomeController" >
+            <div class="navbar-wrapper" ng-if="user.currentUser.nom">
+                <div class="container">
+                    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+                                        class="icon-bar"></span><span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">
+        <img alt="Brand" src="./img/logo.png" width="90px" height="40px">
+      </a>
+                            </div>
+                            <div class="navbar-collapse collapse">
+                                
+                                <ul ng-show="{{ user.currentUser.nom != undefined}}" class="nav navbar-nav navbar-right">
+
+                                    <li class="dropdown"><a  style="color:white" class="dropdown-toggle" data-toggle="dropdown">{{'Account' | translate }}
+                                        <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="navbar-content">
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+
+                     
+                                                            <img src="./apprest/web/uploads/{{user.currentUser.image}}"
+                                                                alt="Alternate Text" class="img-responsive" />
+                                                            
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <span>{{user.currentUser.nom}}</span><br/>
+                                                            
+                                                                <span>{{user.currentUser.antenne}}</span><br/>
+                                                                <span>{{user.currentUser.poste}}</span>
+                                                                
+                                                            <div class="divider">
+                                                            </div>
+
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="navbar-footer">
+                                                    <div class="navbar-footer-content">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                              <a href="#/user/profile/{{user.currentUser.id}}" class="btn btn-default btn-sm">{{'Profile' | translate }}</a>
+                                                                
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                              <a href="#/antenne/show/{{user.currentUser.antid}}" class="btn btn-default btn-sm">{{'Office' | translate }}</a>
+                                                                
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <a href="#/logout" class="btn btn-default btn-sm pull-right">{{'Logout' | translate }}</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <a style="color:white" ng-click="changeLanguage('en')">{{'EN' | translate}}</a>|<a style="color:white" ng-click="changeLanguage('fr')">{{'FR' | translate}}</a>
+                                    
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+    
+
+

@@ -1,0 +1,337 @@
+app_rest_user:
+    resource: "@AppBundle/Resources/config/routing/utilisateur.yml"
+    prefix:   /rest_user
+
+rest_test:
+    path:     /test
+    defaults: { _controller: AppBundle:Utilisateur:test }
+    methods:  [GET, POST]
+
+rest_log:
+    path:     /login
+    defaults: { _controller: AppBundle:Security:login }
+    methods:  [GET, POST]
+
+rest_log:
+    path:     /logout
+    defaults: { _controller: AppBundle:Security:logout }
+    methods:  [GET, POST]
+
+rest_home:
+    path:     /home
+    defaults: { _controller: AppBundle:Utilisateur:home }
+
+rest_user_all:
+    path:     /users
+    defaults: { _controller: AppBundle:Utilisateur:all }
+
+
+rest_user_add:
+    path:     /user/add
+    defaults: { _controller: AppBundle:Utilisateur:new }
+    methods:  [GET, POST]
+
+rest_user_edit:
+    path:     /user/edit/{id}
+    defaults: { _controller: "AppBundle:Utilisateur:edit" }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_user_delete:
+    path:     /user/delete/{id}
+    defaults: { _controller: "AppBundle:Utilisateur:delete" }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_user_profile:
+    path:     /user/profile/{id}
+    defaults: { _controller: "AppBundle:Utilisateur:profile" }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_user_bill_add:
+    path:    /bill/add/{id}
+    defaults: { _controller: "AppBundle:Utilisateur:bill" }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_user_bill:
+    path:    /user/bill/{id}
+    defaults: { _controller: "AppBundle:Utilisateur:billall" }
+    methods:  GET
+    requirements:
+        id: \d+
+
+rest_user_profile_edit:
+    path:     /profile/edit/{id}
+    defaults: { _controller: "AppBundle:Utilisateur:profileedit" }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_article_list:
+    path:     /article/list
+    defaults: { _controller: AppBundle:Article:index }
+    methods:  GET
+
+rest_article_add:
+    path:     /article/add
+    defaults: { _controller: AppBundle:Article:new }
+    methods:  [GET, POST]
+
+rest_article_del:
+    path:     /article/delete/{id}
+    defaults: { _controller: AppBundle:Article:del }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_article_edit:
+    path:     /article/edit/{id}
+    defaults: { _controller: AppBundle:Article:edit }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_antenne_list:
+    path:     /antenne/list
+    defaults: { _controller: AppBundle:Antenne:index }
+    methods:  GET
+
+rest_antenne_add:
+    path:     /antenne/add
+    defaults: { _controller: AppBundle:Antenne:new }
+    methods:  [GET, POST]
+
+rest_antenne_one:
+    path:     /antenne/show/{id}
+    defaults: { _controller: AppBundle:Antenne:stock }
+    methods: [GET, POST]
+    requirements:
+        id: \d+
+
+rest_antenne_edit:
+    path:     /antenne/edit/{id}
+    defaults: { _controller: AppBundle:Antenne:edit }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_antenne_del:
+    path:     /antenne/delete/{id}
+    defaults: { _controller: AppBundle:Antenne:del }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_shop_add:
+    path:     /antenne/shop/add/{id}
+    defaults: { _controller: AppBundle:Antenne:shopadd }
+    methods: [GET, POST]
+    requirements:
+        id: \d+
+
+rest_shop_edit:
+    path:     /shop/edit/{id}
+    defaults: { _controller: AppBundle:Antenne:shopedit }
+    methods: [GET, POST]
+    requirements:
+        id: \d+
+
+rest_shop_one:
+    path:     /antenne/shop/{id}
+    defaults: { _controller: AppBundle:Antenne:shop }
+    methods: GET
+    requirements:
+        id: \d+
+
+
+rest_shop_stat:
+    path:     /shop/stat/{id}
+    defaults: { _controller: AppBundle:Antenne:statm }
+    methods: GET
+    requirements:
+        id: \d+
+
+rest_shop_del:
+    path:     /shop/delete/{id}
+    defaults: { _controller: AppBundle:Antenne:shopdel }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_stock_add:
+    path:     /shop/stock/add/{id}
+    defaults: { _controller: AppBundle:Antenne:stockadd}
+    methods: [GET, POST]
+    requirements:
+        id: \d+
+
+rest_stock_remove:
+    path:     /shop/stock/remove/{id}
+    defaults: { _controller: AppBundle:Antenne:stockremove}
+    methods: [GET, POST]
+    requirements:
+        id: \d+
+
+rest_stock_entree:
+    path:     /stock/in/{id}
+    defaults: { _controller: AppBundle:Antenne:entree}
+    methods: [GET, POST]
+    requirements:
+        id: \d+
+
+rest_stock_sortie:
+    path:     /stock/out/{id}
+    defaults: { _controller: AppBundle:Antenne:sortie}
+    methods: [GET, POST]
+    requirements:
+        id: \d+
+
+rest_project_all:
+    path:     /project
+    defaults: { _controller: AppBundle:Project:index }
+    methods:  GET
+rest_project_add:
+    path:     /project/add
+    defaults: { _controller: AppBundle:Project:new }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_project_show:
+    path:     /project/show/{id}
+    defaults: { _controller: AppBundle:Project:show}
+    methods:  GET
+    requirements:
+        id: \d+
+
+rest_project_evolution:
+    path:     /project/evolution/{id}
+    defaults: { _controller: AppBundle:Project:evolution}
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_project_expenditure:
+    path:     /project/expenditure/{id}
+    defaults: { _controller: AppBundle:Project:expenditure}
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_project_blocage:
+    path:     /project/blocking/{id}
+    defaults: { _controller: AppBundle:Project:blocage}
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_mail_add:
+    path:     /mail/add
+    defaults: { _controller: AppBundle:Mail:new}
+    methods:  [GET, POST]
+
+
+rest_mail_all:
+    path:     /mail
+    defaults: { _controller: AppBundle:Mail:index}
+    methods:  GET
+
+rest_mail_archive:
+    path:     /mail/archive
+    defaults: { _controller: AppBundle:Mail:archive}
+    methods:  GET
+
+rest_project_end:
+    path:     /project/end/{id}
+    defaults: { _controller: AppBundle:Project:end}
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_project_archive:
+    path:     /project/archive/
+    defaults: { _controller: AppBundle:Project:stat}
+    methods:  GET
+
+rest_user_end_day:
+    path:     /user/endday/{id}
+    defaults: { _controller: "AppBundle:Utilisateur:endday" }
+    methods:  [GET, POST]
+    requirements:
+        id: \d+
+
+rest_user_presence:
+    path:     /user/presence/{id}
+    defaults: { _controller: "AppBundle:Utilisateur:presence" }
+    methods:  GET
+    requirements:
+        id: \d+
+rest_stock_alerte:
+    path:     /stock/alerte
+    defaults: { _controller: "AppBundle:Antenne:alerte" }
+    methods:  GET
+
+rest_stat_gen:
+    path:     /stat/general
+    defaults: { _controller: "AppBundle:Antenne:statgenerale" }
+    methods:  GET
+
+rest_stat_antenne:
+    path:     /stat/antenne/{id}
+    defaults: { _controller: "AppBundle:Antenne:statant" }
+    methods:  GET
+    requirements:
+        id: \d+
+rest_pdf_generate:
+    path:    /generate/pdf
+    defaults: { _controller: "AppBundle:Antenne:print"}
+    methods: GET
+
+rest_pdf_shop:
+    path:    /shop/pdf/{id}
+    defaults: { _controller: "AppBundle:Antenne:printstat"}
+    methods: GET
+    requirements:
+        id: \d+
+
+rest_pdf_depense:
+    path:    /project/dep/{id}
+    defaults: { _controller: "AppBundle:Project:printdep"}
+    methods: GET
+    requirements:
+        id: \d+
+
+rest_pdf_mail:
+    path:    /mail/pdf
+    defaults: { _controller: "AppBundle:Mail:print"}
+    methods: GET
+
+rest_pdf_pres:
+    path:    /presence/pdf/{id}
+    defaults: { _controller: "AppBundle:Antenne:printpre"}
+    methods: GET
+    requirements:
+        id: \d+
+
+rest_pdf_ant:
+    path:    /ant/pdf/{id}
+    defaults: { _controller: "AppBundle:Antenne:printstock"}
+    methods: GET
+    requirements:
+        id: \d+
+
+rest_pdf_article:
+    path:    /article/pdf
+    defaults: { _controller: "AppBundle:Antenne:printarticle"}
+    methods: GET
+
+
+
+
+

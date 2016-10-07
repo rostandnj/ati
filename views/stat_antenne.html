@@ -1,0 +1,170 @@
+<flare-messages></flare-messages>
+ <div class=" panel panel-primary" >
+      <div class="panel-heading"  style="background-color:#A2EFF4">
+        
+          <h3>{{'Office_stat' | translate }}: {{antenne.libelle}}</h3>
+          <div style="text-align:center" class="loading-spiner-holder float-right" data-loading >
+            <div class="loading-spiner"><img width="60" height="30" src="./img/spinner.gif" /></div>
+        </div>
+       
+      </div>
+      <div class="panel-body">
+      <button class = "btn-sm btn-warning" data-toggle = "collapse" data-target = "#presence">
+             {{'Presence' | translate }}
+      </button>
+       <div class="collapse" id="presence">
+       <ul  class=" " >
+          <li  dir-paginate="(index,pre) in presences | itemsPerPage: 8" current-page="{{ pagination.current }}" pagination-id="list">
+          
+            <button class = "btn-sm btn-warning" data-toggle = "modal" data-target = "#{{index}}">
+             {{index}}
+            </button>
+            <div class="mod modal fade" id="{{index}}">
+              <div class="modal-content">
+              <div class="modal-header" style="background-color:#A2EFF4">
+              <h4>{{'Presence_history' | translate }} {{index}}</h4>
+
+                <button   ng-click="print(pre.0.utilisateur.id)"  class="btn-sm btn-warning" >
+                  {{'get_file' | translate }}
+                </button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                
+              </div>
+              <div class="modal-body">
+              <table class="table table-user-information">
+                <thead>
+
+                <th>{{'Date' | translate }}</th>
+                <th>{{'Incomming' | translate }}</th>
+                <th>{{'From' | translate }}</th>
+                <th>{{'Outgoing' | translate }}</th>
+                <th>{{'From' | translate }}</th>
+               
+                
+                </thead>
+                
+                <tbody>
+                  <tr  dir-paginate="pres in pre  | itemsPerPage: pageSize" current-page="currentPage" pagination-id="pre">
+
+                  
+                     
+                    <td>{{pres.date | date:'longDate'}}</td>
+                    <td>{{pres.arrivee}}</td>
+                    <td>{{pres.loginplace}}</td>
+                    <td>{{pres.depart}}</td>
+                    <td>{{pres.logoutplace}}</td>
+                    
+                   
+                    
+                  </tr>
+               
+                 </tbody>
+                </table>
+               <dir-pagination-controls boundary-links="true" pagination-id="pre" ></dir-pagination-controls>
+                
+              </div>
+              </div>
+              
+              
+              </div>
+            </li>
+          </ul>
+          <dir-pagination-controls boundary-links="true" pagination-id="list" ></dir-pagination-controls>
+
+       </div>
+
+       <button class = "btn-sm btn-success" data-toggle = "collapse" data-target = "#stocks">
+             {{'Stocks' | translate }}
+      </button>
+       <div class="collapse" id="stocks">
+       <ul  class=" " >
+          <li  dir-paginate="(index,s) in stocks | itemsPerPage: 8" current-page="{{ pagination.current }}" pagination-id="st">
+          
+            <button class = "btn-sm btn-success" data-toggle = "modal" data-target = "#{{index}}">
+             {{index}}
+            </button>
+            <div class="mod modal fade" id="{{index}}">
+              <div class="modal-content">
+              <div class="modal-header" style="background-color:#A2EFF4">
+                <h4>{{'Stock_history' | translate }} {{index}}</h4>
+                
+                
+                <button   ng-click="prints(index)"  class="btn-sm btn-warning" >
+                  {{'get_file' | translate }}
+                </button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                
+              </div>
+              <div class="modal-body">
+              <h4 class="title"><kbd>{{'Entrance' | translate }}</kbd></h4>
+              <table class="table table-user-information">
+                
+
+               <thead>
+
+                <th>{{'Date' | translate }}</th>
+                <th>{{'Title' | translate }}</th>
+                <th>{{'Quantity' | translate }}</th>
+                <th>{{'User' | translate }}</th>
+              </thead>
+               <tbody ng-repeat="(i,tab) in s " ng-if=" i =='entree' ">
+                
+                
+                <tr  dir-paginate="in in tab | itemsPerPage: 7" current-page="{{ pagination.current }}" pagination-id="ent">
+                  
+                  <td>{{in.date | date:'longDate'}}</td>
+                  <td>{{in.libelle}}</td>
+                  <td>{{in.quantite}}</td>
+                  <td>{{in.utilisateur.nom}}</td>
+                </tr>
+               
+                 </tbody>
+              </table>
+              <dir-pagination-controls boundary-links="true" pagination-id="ent" ></dir-pagination-controls>
+
+              <h4 class="title"><kbd>{{'Output' | translate }}</kbd></h4>
+              <table class="table table-user-information">
+                
+
+               <thead>
+
+                <th>{{'Date' | translate }}</th>
+                <th>{{'Title' | translate }}</th>
+                <th>{{'Quantity' | translate }}</th>
+                <th>{{'User' | translate }}</th>
+              </thead>
+                <tbody ng-repeat="(i,tab) in s " ng-if=" i =='sortie' ">
+                
+                <tr  dir-paginate="in in tab | itemsPerPage: 7" current-page="{{ pagination.current }}" pagination-id="sort">
+                  
+                  <td>{{in.date | date:'longDate'}}</td>
+                  <td>{{in.libelle}}</td>
+                  <td>{{in.quantite}}</td>
+                  <td>{{in.utilisateur.nom}}</td>
+                </tr>
+               
+                 </tbody>
+              </table>
+              <dir-pagination-controls boundary-links="true" pagination-id="sort" ></dir-pagination-controls>
+                
+              </div>
+              </div>
+              
+              
+              </div>
+            </li>
+          </ul>
+          <dir-pagination-controls boundary-links="true" pagination-id="st" ></dir-pagination-controls>
+
+       </div>
+      
+
+      
+
+
+        
+        
+
+                    
+    </div>
+  </div>

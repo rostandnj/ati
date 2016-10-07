@@ -1,0 +1,23 @@
+<div >
+ <flare-messages></flare-messages>
+<div class=" panel panel-danger">
+      <div class="panel-heading">
+      	<h3> {{'Are_you_sure' | translate }} "<em>{{article.nom}}</em>"</h3>
+        <div style="text-align:center" class="loading-spiner-holder" data-loading ><div class="loading-spiner"><img width="60" height="30" src="./img/spinner.gif" /></div></div>
+      </div>
+       <div class="panel-body">
+
+    <form name="myForm" enctype="multipart/form-data" 
+          sf-schema="schema"
+          sf-form="form"
+          sf-model="model"
+          ng-submit="onSubmit(myForm)">
+          <!--<input type="file" name="files" accept="image/*">-->
+          <a style="float:right" class="btn btn-md btn-warning" href="#/article/list">{{'No' | translate }}/a>
+            
+          </form>
+          
+    </div>
+
+</div> 
+

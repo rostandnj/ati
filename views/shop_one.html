@@ -1,0 +1,67 @@
+
+
+<div>
+ <flare-messages></flare-messages>
+ <div class=" panel panel-primary">
+      <div class="panel-heading" style="background-color:#24CA5A">
+        <h3>{{'Shop' | translate }} : <em>{{magasin.nom}}</em></h3><a class="btn btn-primary" href="#/antenne/show/{{magasin.antenne.id}}">{{'Office' | translate }}</a>
+
+        <span ng-show="{{u.currentUser.role == 'ROLE_MANAGER'}}">
+          <a  class="btn btn-info" href="#/shop/stock/add/{{magasin.id}}">{{'Add' | translate }}</a>
+        </span>
+        <a class="btn btn-success" href="#/shop/stat/{{magasin.id}}">{{'Statistic' | translate }}</a>
+        <div style="text-align:center" class="loading-spiner-holder" data-loading ><div class="loading-spiner"><img width="60" height="30" src="./img/spinner.gif" /></div></div>
+        
+      </div>
+      <div class="panel-body">
+        <table class="table table-bordered table-hover table-condensed table-responsive">
+          <thead>
+            <tr>
+              <th>{{'Name' | translate }}</th>
+              <th>{{'Quantity' | translate }}</th>
+               
+                <th >{{'Action' | translate }}</th>
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr  dir-paginate="stock in stocks | itemsPerPage: pageSize" current-page="currentPage">
+           
+              <td>
+                {{stock.article.nom}} 
+              </td>
+             
+              <td>
+                {{stock.quantite}} 
+              </td>
+              <td>
+                <span ng-show="{{u.currentUser.role == 'ROLE_MANAGER'}}">
+                  <a ng-show="{{u.currentUser.antenne == magasin.antenne.libelle }}" class="btn-success btn-sm" href="#/stock/in/{{stock.id}}">{{'ingress' | translate }}</a>
+                </span>
+                <span ng-show="{{u.currentUser.role == 'ROLE_MANAGER'}}">
+                  <a ng-show="{{u.currentUser.antenne == magasin.antenne.libelle }}" class="btn-sm btn-warning" href="#/stock/out/{{stock.id}}" >{{'outflow' | translate }}</a>
+                </span>
+                <span ng-show="{{u.currentUser.role == 'ROLE_MANAGER'}}">
+                  <a ng-show="{{u.currentUser.antenne == magasin.antenne.libelle }}" class="btn-sm btn-danger" href="#/shop/stock/remove/{{stock.id}}" >{{'remove' | translate }}</a>
+                </span>
+                 
+                 
+              </td>
+           
+            </tr>
+          </tbody>
+        </table>
+        <dir-pagination-controls boundary-links="true"  ></dir-pagination-controls>
+        
+
+        <!-- Button trigger modal -->
+        
+
+                    
+      </div>
+</div>
+</div>
+
+
+ 

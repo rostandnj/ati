@@ -1,0 +1,103 @@
+
+ <flare-messages></flare-messages>
+ <div class=" panel panel-primary" >
+  <div class="panel-heading">
+    <h4>{{'Presence' | translate }}</h4>
+    <div style="text-align:center" class="loading-spiner-holder" data-loading ><div class="loading-spiner"><img width="60" height="30" src="./img/spinner.gif" /></div>
+    </div>
+    <a class="btn btn-primary" href="#/user/profile/{{user.currentUser.id}}">{{'back' | translate }}</a>
+      
+    <button class="btn-sm btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        {{'Archive' | translate }}
+    </button>
+    <div class="collapse" id="collapseExample">
+      <div class=" " ng-repeat="(index,month) in all">
+        <button class = "btn-sm btn-warning" data-toggle = "modal" data-target = "#{{index}}">
+          {{index}}
+        </button>
+        
+        <div class = "mod modal fade" id = "{{index}}" tabindex = "-1" role = "dialog" 
+         aria-labelledby = "myModalLabel" aria-hidden = "true">
+         
+         
+            <div class = "modal-content">
+              <div class="modal-header" style="background-color:blue" >
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="panel-title">{{'Month' | translate }} : {{index}}</h4>
+              </div>
+               
+               <div class="modal-body" style="color:black">
+
+               <table class="table table-user-information">
+                  <thead>
+
+                  <th>{{'Date' | translate }}</th>
+                  <th>{{'Incomming' | translate }}</th>
+                  <th>{{'From' | translate }}</th>
+                  <th>{{'Outgoing' | translate }}</th>
+                  <th>{{'From' | translate }}</th>
+                  
+                  </thead>
+                  
+                  <tbody>
+                    <tr  dir-paginate="pre in month | itemsPerPage: pageSize" current-page="currentPage" pagination-id="ar">
+                    
+                       
+                      <td>{{pre.date | date:'longDate'}}</td>
+                      <td>{{pre.arrivee}}</td>
+                      <td> Mac :{{pre.loginplace}} ip:{{pre.loginip}}</td>
+                      <td>{{pre.depart}}</td>
+                      <td> Mac :{{pre.logoutplace}} ip:{{pre.logoutip}}</td>
+                    </tr>
+                 
+                   </tbody>
+                </table>
+                <dir-pagination-controls boundary-links="true" pagination-id="ar" ></dir-pagination-controls>
+                 
+              </div>
+   
+            </div><!-- /.modal-content -->
+ 
+      </div><!-- /.modal -->
+        
+      </div>
+    </div>
+
+
+  </div>
+    
+        
+    <div class="panel-body">
+     <div class="caption">
+        <h3> {{'Current' | translate }}</h3>
+        <table class="table table-user-information">
+          <thead>
+
+          <th>Date</th>
+                  <th>{{'Incomming' | translate }}</th>
+                  <th>{{'From' | translate }}</th>
+                  <th>{{'Outgoing' | translate }}</th>
+                  <th>{{'From' | translate }}</th>
+          </thead>
+          
+          <tbody>
+            <tr  dir-paginate="pre in current | itemsPerPage: 7" current-page="{{ pagination.current }}" pagination-id="cu">
+            
+               
+              <td>{{pre.date | date:'longDate'}}</td>
+                      <td>{{pre.arrivee}}</td>
+                      <td> Mac :{{pre.loginplace}} ip:{{pre.loginip}}</td>
+                      <td>{{pre.depart}}</td>
+                      <td> Mac :{{pre.logoutplace}} ip:{{pre.logoutip}}</td>
+              
+            </tr>
+         
+           </tbody>
+      </table>
+      <dir-pagination-controls boundary-links="true" pagination-id="cu" ></dir-pagination-controls>
+    </div>
+      
+      
+
+    </div>
+    </div>

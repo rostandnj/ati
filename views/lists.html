@@ -1,0 +1,128 @@
+<flare-messages></flare-messages>
+ <div class=" panel panel-primary ">
+      <div class="panel-heading" style="background-color:#A2EFF4">
+        <h3>{{'Staff_list' | translate }}</h3>
+        <a ng-show="{{u.currentUser.role == 'ROLE_MANAGER'}}" class="btn btn-primary" href="#/user/add">{{'Add' | translate }}</a>
+        <div style="text-align:center" class="loading-spiner-holder" data-loading ><div class="loading-spiner"><img width="60" height="30" src="./img/spinner.gif" /></div></div>
+      </div>
+      <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover table-condensed table-responsive table-striped">
+          <thead>
+            <tr>
+              <th>{{'Name' | translate }}</th>
+              <th>{{'Surname' | translate }}</th>
+             
+              
+              <th>{{'Poste' | translate }}</th>
+              <th>{{'Action' | translate }}</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr  dir-paginate="user in users | itemsPerPage: pageSize" current-page="currentPage">
+           
+              <td>
+                {{user.nom}} 
+              </td>
+              <td> {{user.prenom}} </td>
+              
+             
+              <td> {{user.poste.libelle}} </td>
+              <td> 
+                
+                 <button class = "btn-sm btn-warning btn-lg" data-toggle = "modal" data-target = "#{{user.id}}">
+                   <i class="glyphicon glyphicon-eye-open"></i>
+                </button>
+                <a ng-show="{{u.currentUser.role == 'ROLE_MANAGER'}}" href="#/user/edit/{{user.id}}" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i></a>
+                <a ng-show="{{u.currentUser.role == 'ROLE_MANAGER'}}" href="#/user/delete/{{user.id}}" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove-circle"></i></a>
+
+                <!-- Modal -->
+                <div class = "mod modal fade" id = "{{user.id}}" tabindex = "-1" role = "dialog" 
+                   aria-labelledby = "myModalLabel" aria-hidden = "true">
+                   
+                    <div class="modal-header" style="background-color:#A2EFF4">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                           <h3 class="panel-title">{{'user' | translate }}</h3>  
+                    </div>
+                      <div class = "modal-content">
+                         
+                              <div class="row">
+                                <div class="col-md-3 col-lg-3 "  align="center"> 
+
+                                <img ng-show="{{ user.image != undefined}}" src="./apprest/web/uploads/{{user.image.nom}}"  class="img-circle img-responsive" />
+                                
+                                </div>
+                                <div class="col-sm-12 col-md-9 col-lg-9 "> 
+                                  <table class="table table-user-information table-responsive">
+                                    <tbody>
+                                      <tr>
+                                        <td>{{'name' | translate }}:</td>
+                                        <td>{{user.nom}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>{{'Surname' | translate }}:</td>
+                                        <td>{{user.prenom}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>{{'Address' | translate }}:</td>
+                                        <td>{{user.adresse}}</td>
+                                      </tr>
+                                   
+                                         <tr>
+                                             <tr>
+                                        <td>{{'Email' | translate }}:</td>
+                                        <td>{{user.email}}</td>
+                                      </tr>
+                                        <tr>
+                                        <td>{{'Phone_number' | translate }}:</td>
+                                        <td>{{user.telephone}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>{{'Role' | translate }}:</td>
+                                        <td>{{user.poste.libelle}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>{{'Office' | translate }}:</td>
+                                        <td>{{user.antenne.libelle}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>{{'Gender' | translate }}:</td>
+                                        <td> {{ user.sexe }}</td>
+                                      </tr>
+                                        
+                                     
+                                     </tbody>
+                                    </table>
+
+                  
+                                      
+                                  </div>
+                                </div>
+
+                              </div>
+                            
+                                   
+                                
+            
+                         
+
+      
+                   </div><!-- /.modal-dialog -->
+                  
+                </div><!-- /.modal -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <dir-pagination-controls boundary-links="true"  ></dir-pagination-controls>
+        </div>
+        <!-- Button trigger modal -->
+        
+
+                    
+      </div>
+</div>
+
+
+ 

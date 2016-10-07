@@ -1,0 +1,78 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        #in_memory:
+        #   memory: ~
+        chain_provider:
+            chain:
+                providers: [user_db, in_memory]
+        user_db:
+            entity:
+                class: AppBundle:Utilisateur
+        in_memory:
+            memory:
+                users:
+                    njadmin:
+                        password: 123456
+                        roles: ROLE_USER
+                    #ati2016
+                    admin:
+                        password: ~
+                        roles: ROLE_ADMIN
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
+        AppBundle\Entity\Utilisateur:
+            algorithm: bcrypt
+            cost: 12
+    role_hierarchy:
+        ROLE_EMPLOYEE: [ROLE_USER]
+        ROLE_MANAGER:     [ROLE_EMPLOYEE]
+        ROLE_ADMIN:       [ROLE_MANAGER]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            logout: ~
+            guard:
+                authenticators:
+                    - app.token_authenticator
+            stateless: false
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            #form_login:
+            #    login_path: rest_log
+             #   check_path: rest_log
+              #  default_target_path: /rest/home
+               # csrf_token_generator: security.csrf.token_manager
+            #logout:
+             #   path: /logout
+             #   target: /
+
+           # remember_me:
+             #   secret: "%secret%"
+              #  lifetime: 2232000
+               # path: /
+               # remember_me_parameter: "_remember_me"
+               # always_remember_me: false
+
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        #- { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }
+        - { path: ^/rest/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http}
+        #- { path: /rest, roles: ROLE_USER, requires_channel: http}
+        #- { path: /add, roles: ROLE_MANAGER, requires_channel: http}
+        #- { path: /delete, roles: ROLE_MANAGER, requires_channel: http}

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Utilisateur list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Type</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Cni</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Roles</th>
+                <th>Salt</th>
+                <th>Adresse</th>
+                <th>Dateenregistrement</th>
+                <th>Lastlogin</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for utilisateur in utilisateurs %}
+            <tr>
+                <td><a href="{{ path('rest_user_show', { 'id': utilisateur.id }) }}">{{ utilisateur.id }}</a></td>
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.sexe }}</td>
+                <td>{{ utilisateur.type }}</td>
+                <td>{{ utilisateur.telephone }}</td>
+                <td>{{ utilisateur.email }}</td>
+                <td>{{ utilisateur.cni }}</td>
+                <td>{{ utilisateur.login }}</td>
+                <td>{{ utilisateur.password }}</td>
+                <td>{% if utilisateur.roles %}{{ utilisateur.roles|join(', ') }}{% endif %}</td>
+                <td>{{ utilisateur.salt }}</td>
+                <td>{{ utilisateur.adresse }}</td>
+                <td>{% if utilisateur.dateEnregistrement %}{{ utilisateur.dateEnregistrement|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if utilisateur.lastLogin %}{{ utilisateur.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if utilisateur.date %}{{ utilisateur.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('rest_user_show', { 'id': utilisateur.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('rest_user_edit', { 'id': utilisateur.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rest_user_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

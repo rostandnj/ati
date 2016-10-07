@@ -1,0 +1,17 @@
+rest_user_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Utilisateur:index" }
+    methods:  GET
+
+
+
+rest_user_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Utilisateur:new" }
+    methods:  [GET, POST]
+
+
+rest_user_one:
+    path:     /one/{id}
+    defaults: { _controller: "AppBundle:Utilisateur:show" }
+    methods:  GET

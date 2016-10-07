@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" type="text/css" />
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+
+
+        {% endblock %}
+
+
+
+
+        {% block javascripts %}
+
+        <script type="text/javascript" src="{{ asset('js/bootstrap.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/angular.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/highcharts.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('js/app.js')}}"></script>
+
+        
+
+
+        {% endblock %}
+    </body>
+</html>

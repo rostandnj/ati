@@ -1,0 +1,9 @@
+services:
+#    core.example:
+#        class: AppBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+    authentication_handler:
+        class: AppBundle\Handler\AuthenticationHandler
+        calls: 
+            - ["setContainer", ["@service_container"]]
+#        arguments: ["@service_id", "plain_value", %parameter%]

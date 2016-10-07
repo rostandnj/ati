@@ -1,0 +1,7 @@
+users:
+    resource: AppBundle\Controller\UsersController
+    type: rest
+
+comments:
+    resource: AppBundle\Controller\CommentsController
+    type: rest

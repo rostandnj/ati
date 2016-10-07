@@ -1,0 +1,56 @@
+<flare-messages></flare-messages>
+ <div class=" panel panel-primary">
+      <div class="panel-heading" style="background-color: #D6F496">
+        <h3>{{'Mail_archive' | translate }}</h3>
+        <a class="btn btn-primary" href="#/mail/">{{'Current' | translate }}</a>
+        <div style="text-align:center" class="loading-spiner-holder" data-loading ><div class="loading-spiner"><img width="60" height="30" src="./img/spinner.gif" /></div></div>
+        
+      </div>
+      <div class="panel-body">
+        <ul  class="list-group" ng-repeat="(index,month) in archive">
+          <li>
+            <button class = "btn-sm btn-warning" data-toggle = "collapse" data-target = "#{{index}}">
+             {{'Month' | translate }}: {{index}}
+            </button>
+            <div class="collapse" id="{{index}}">
+              
+              <table class="table table-user-information">
+                <thead>
+
+                <th>{{'Title' | translate }}</th>
+                <th>{{'Type' | translate }}</th>
+                <th>{{'Sender' | translate }}</th>
+                <th>{{'Receiver' | translate }}</th>
+                <th>{{'Details' | translate }}</th>
+                
+                </thead>
+                
+                <tbody>
+                  <tr  dir-paginate="mail in month | itemsPerPage: pageSize" current-page="currentPage">
+                
+                  
+                     
+                    <td>{{mail.libelle}}</td>
+                    <td>{{mail.type}}</td>
+                    <td>{{mail.emetteur}}</td>
+                    <td>{{mail.recepteur}}</td>
+                    <td >
+                      <a ng-show="{{ mail.image != undefined}}" class="btn-sm btn-warning" href ="./apprest/web/uploads/{{mail.image.nom}}" data-lity>
+                   {{'Image' | translate }}         
+                </a>
+                <a ng-show="{{ mail.file != undefined}}" class="btn-sm btn-success" href ="./apprest/web/uploads/{{mail.file.nom}}" data-lity>
+                   {{'File' | translate }}        
+                </a>
+                      
+                    </td>
+                    
+                  </tr>
+               
+                 </tbody>
+                </table>
+                <dir-pagination-controls boundary-links="true"  ></dir-pagination-controls>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>

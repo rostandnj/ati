@@ -1,0 +1,270 @@
+<div class="content-wrapper">
+<div class="row">
+<div class="container main">
+<div >
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="../../img/logo.png" width="100px" height="60px">
+      </a>
+    </div>
+    <div class="col-offset-lg-2 col-lg-3 col-offset-md-2 col-md-3 col-offset-sm-2 col-sm-3 col-offset-xs-2 col-xs-3 left-div" >
+    <div class="user-settings-wrapper">
+        <ul class="nav">
+
+                        
+                        
+            <li class="dropdown">
+                <button class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <span class="glyphicon glyphicon-user" style="font-size: 25px;"></span>
+                </button>
+                
+                
+            
+                <div class="dropdown-menu dropdown-settings">
+                    <div class="media">
+                        
+                        <div class="media-body">
+                        
+                            <h4 class="media-heading">Me</h4>
+                            <h5>poste 1</h5>
+                            
+                                <h5> Statut: role</h5>
+                            
+                            <h4 class="media-heading"></h4>
+                        
+                                
+                        
+                        </div>
+                    </div>
+                    <hr />
+                    
+                    <a href="{{ path('sdz_ati_personnel_profil',{'id':app.user.id}) }}" class="btn btn-info btn-sm">Profile</a>&nbsp; <a href="{{ path('logout')}}" class="btn btn-danger btn-sm">Logout <span class="center glyphicon glyphicon-off"></span></a>
+
+                </div>
+            </li>
+        </ul>
+
+     </div>
+    </div>
+   
+  </div>
+</nav>
+
+
+</div>
+</div>
+</div>
+
+<div class="row menu">
+
+<div class="col-sm-3 col-md-3 col-lg-3 ">
+
+    <div class=" ">
+    <ul class="list-group">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="dashboard-div-wrapper bk-clr-one">
+               
+                <a onmouseover="" style="cursor: pointer;" data-toggle="collapse" data-target="#shop" aria-expanded="false" aria-controls="collapseExample">
+                 <i  class="glyphicon glyphicon-blackboard dashboard-div-icon" ></i><i  class=" title">Shop</i>
+                </a>
+                <div class="collapse" id="shop">
+                   <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/apprest/web/app_dev.php/rest/article/list">Articles</a>
+                            </li>
+                            
+                            <li><a  href="#/apprest/web/app_dev.php/rest/antenne/list">Shop Manager</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            
+            </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="dashboard-div-wrapper bk-clr-two">
+               
+                <a onmouseover="" style="cursor: pointer;" data-toggle="collapse" data-target="#project" aria-expanded="false" aria-controls="collapseExample">
+                 <i  class="glyphicon glyphicon-list-alt dashboard-div-icon" ></i><i  class=" title">Project</i>
+                </a>
+                <div class="collapse" id="project">
+                   <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/apprest/web/app_dev.php/rest/project/">Ongoing Projects</a>
+                            </li>
+                            <li><a href="#apprest/web/app_dev.php/rest/project/archive/">Archive</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            
+            </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="dashboard-div-wrapper bk-clr-three">
+               
+                <a onmouseover="" style="cursor: pointer;" data-toggle="collapse" data-target="#staff" aria-expanded="false" aria-controls="collapseExample">
+                 <i  class="glyphicon glyphicon-user dashboard-div-icon" ></i><i  class=" title">Staff</i>
+                </a>
+                <div class="collapse" id="staff">
+                    <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/apprest/web/app_dev.php/rest/users">Staff Members</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            
+            </div>
+            </div>
+        </ul>
+
+    </div>
+
+</div>
+ 
+ <div class="col-sm-9 col-md-9 col-lg-9">
+ <flare-messages></flare-messages>
+ <div class=" panel panel-primary">
+      <div class="panel-heading">
+        <h3>Article List</h3><a class="btn btn-primary" href="#/apprest/web/app_dev.php/rest/article/add">Add</a>
+        <div style="text-align:center" class="loading-spiner-holder" data-loading ><div class="loading-spiner"><img width="60" height="30" src="../../img/spinner.gif" /></div></div>
+        
+      </div>
+      <div class="panel-body">
+        <table class="table table-bordered table-hover table-condensed ">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              
+              <th>Opération</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="article in articles">
+              <td>
+                {{article.nom}} 
+              </td>
+              <td> 
+                {{article.prix}} 
+              </td>
+              <td> 
+
+                  <button class = "btn-sm btn-warning btn-lg" data-toggle = "modal" data-target = "#{{article.id}}">
+                   <i class="glyphicon glyphicon-eye-open"></i>
+                </button>
+                <a  href="#/apprest/web/app_dev.php/rest/article/edit/{{article.id}}" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i></a>
+                <a id="closemodal" href="#/apprest/web/app_dev.php/rest/article/delete/{{article.id}}" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove-circle"></i></a>
+
+
+                <!-- Modal -->
+                <div class = "modal fade" id = "{{article.id}}" tabindex = "-1" role = "dialog" 
+                   aria-labelledby = "myModalLabel" aria-hidden = "true">
+                   
+                   <div class = "modal-dialog">
+                      <div class = "modal-content">
+                         
+                         <div class="panel panel-info">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">Article Informations</h3>
+                            </div>
+                            <div class="panel-body">
+                              <div class="row">
+
+                                <div class="col-md-8 col-sm-12 col-lg-8">
+
+                                    <div class="thumbnail no-margin-bottom">
+                                      
+                                        
+                                        <div class="caption">
+                                            <h3 id="thumbnail-label">Aricle Information<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
+                                            <table class="table table-user-information">
+                                              <tbody>
+                                                <tr>
+                                                   
+                                                  <td>Name:</td>
+                                                  <td>{{article.nom}}</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Feature:</td>
+                                                  <td>{{article.caracteristique}}</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Usage:</td>
+                                                  <td>{{article.utilisation}}</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Price:</td>
+                                                  <td>{{article.prix}}</td>
+                                                </tr>
+                                             
+                                                
+                                               </tbody>
+                                          </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-12 col-lg-4 " align="center"> 
+                                      
+                                      <img  ng-show="{{ article.image != undefined}}" src="../../uploads/{{article.image.nom}}" width="430" height="250" class=" img-responsive" />
+                                     
+                                      </div>
+                                      <script>
+function bigImg(x) {
+    x.style.height = "500px";
+    x.style.width = "400px";
+}
+function normalImg(x) {
+    x.style.height = "250px";
+    x.style.width = "430px";
+}
+
+</script>
+
+                                
+                                </div>
+                              </div>
+                             <div class="panel-footer">
+
+                                    
+                                    <span class="pull-right">
+                                        
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                                       
+                                    </span>
+                                </div>
+            
+                          </div>
+
+      
+                         
+                         
+                      </div><!-- /.modal-content -->
+                   </div><!-- /.modal-dialog -->
+                  
+                </div><!-- /.modal -->
+
+              </td>
+                
+              
+            </tr>
+          </tbody>
+        </table>
+        <!-- Button trigger modal -->
+        
+
+                    
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+

@@ -1,0 +1,27 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix: /api/doc
+
+rest:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:   /rest
+    options:
+      expose: true
+api:
+    resource: "@AppBundle/Resources/config/routing/api.yml"
+    prefix:   /api
+    options:
+        expose: true
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+logout:
+    path:    /logout
+rest_user_test:
+    path:     /
+    defaults: { _controller: AppBundle:Security:login}
+    methods:  [GET, POST]

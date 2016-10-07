@@ -1,0 +1,45 @@
+api_user_list:
+    path:     /users
+    defaults: { _controller: AppBundle:Utilisateur:apilist}
+    methods:  [GET,POST]
+
+api_poste_list:
+    path:     /postes
+    defaults: { _controller: AppBundle:Utilisateur:apiposte}
+    methods:  GET
+
+api_poste_one:
+    path:     /postes/{id}
+    defaults: { _controller: AppBundle:Utilisateur:apiposteone }
+    methods:  GET
+
+api_article_list:
+    path:     /articles
+    defaults: { _controller: AppBundle:Article:apilist }
+    methods:  GET
+
+api_antenne_list:
+    path:     /antennes
+    defaults: { _controller: AppBundle:Antenne:apilist }
+    methods:  GET
+
+api_magasin_list:
+    path:     /magasins
+    defaults: { _controller: AppBundle:Antenne:apimagasinlist }
+    methods:  GET
+
+api_projet_list:
+    path:     /projets
+    defaults: { _controller: AppBundle:Project:apilist }
+    methods:  GET
+
+api_user_create:
+    path:     /users/create
+    defaults: { _controller: AppBundle:Utilisateur:apicreate }
+    methods:  [GET,POST]
+
+api_image_upload:
+    path:     /upload
+    defaults: { _controller: AppBundle:Utilisateur:upload }
+    methods:  [GET,POST]
+

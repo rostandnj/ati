@@ -1,0 +1,93 @@
+
+
+    <ul  class="list-group" ng-controller="navCtrl" >
+    <div ng-if="user.currentUser.nom">
+        <div class="col-sm-12 col-md-12 col-lg-12" >
+            <div class="dashboard-div-wrapper bk-clr-one">
+               
+                <a onmouseover="" style="cursor: pointer;" data-toggle="collapse" data-target="#shop" aria-expanded="false" aria-controls="collapseExample">
+                 <i  class="glyphicon glyphicon-star dashboard-div-icon" ></i><i  class=" title">{{'Shop' | translate }}</i>
+                </a>
+                <div class="collapse" id="shop">
+                   <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="#/article/list">{{'Articles' | translate }}</a>
+                            </li>
+
+                            
+                            <li><a  href="#/antenne/list">{{'shop_manager' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            
+            </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="dashboard-div-wrapper bk-clr-two">
+               
+                <a onmouseover="" style="cursor: pointer;" data-toggle="collapse" data-target="#project" aria-expanded="false" aria-controls="collapseExample">
+                 <i  class="glyphicon glyphicon-list-alt dashboard-div-icon" ></i><i  class=" title">{{'Project' | translate }}</i>
+                </a>
+                <div class="collapse" id="project">
+                   <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/project">{{'Ongoing' | translate }} </a>
+                            </li>
+                            <li><a href="#/project/archive">{{'archive' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            
+            </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="dashboard-div-wrapper bk-clr-four">
+               
+                <a onmouseover="" style="cursor: pointer;" data-toggle="collapse" data-target="#mail" aria-expanded="false" aria-controls="collapseExample">
+                 <i  class="glyphicon glyphicon-envelope dashboard-div-icon" ></i><i  class=" title">{{'Mail' | translate }}</i>
+                </a>
+                <div class="collapse" id="mail">
+                    <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/mail">{{'Current' | translate }}</a>
+                            </li>
+                            <li><a href="#/mail/archive">{{'archive' | translate }}</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            
+            </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="dashboard-div-wrapper bk-clr-three">
+               
+                <a onmouseover="" style="cursor: pointer;" data-toggle="collapse" data-target="#staff" aria-expanded="false" aria-controls="collapseExample">
+                 <i  class="glyphicon glyphicon-user dashboard-div-icon" ></i><i  class=" title">{{'Staff' | translate }}</i>
+                </a>
+                <div class="collapse" id="staff">
+                    <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/users">{{'User' | translate }}</a>
+                            </li>
+                            <li>
+                                <a href="#/stat/general"> {{'General_stat' | translate }}</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            
+            </div>
+            </div>
+            </div>
+
+            
+        </ul>
